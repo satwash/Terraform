@@ -13,22 +13,7 @@ resource "aws_s3_bucket" "example" {
   }
 }
 
-resource "aws_s3_bucket_versioning" "example" {
-  bucket = aws_s3_bucket.test_bucket.id
-
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
-
 resource "aws_s3_bucket_acl" "example" {
   bucket = aws_s3_bucket.example.id
-  acl    = "public"
-}
-
-resource "aws_s3_bucket_logging" "example" {
-  bucket = aws_s3_bucket.example.id
-
-  target_bucket = aws_s3_bucket.log_bucket.id
-  target_prefix = "log/"
+  acl    = "private"
 }
